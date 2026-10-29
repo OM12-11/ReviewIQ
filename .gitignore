@@ -1,0 +1,32 @@
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/raw/*
+data/processed/*
+data/test/*
+
+# Model files
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/

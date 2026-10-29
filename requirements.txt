@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+spacy
+transformers
+torch
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv
+python-multipart
