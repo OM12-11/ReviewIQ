@@ -1,32 +1,32 @@
-# Virtual environment
+# Python virtual environments
 venv/
+.venv/
 
-# Environment variables
+# Environment variables and secrets
 .env
+.env.*
+!.env.example
 
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
+*.pyo
 
-# Jupyter
+# Jupyter temporary files
 .ipynb_checkpoints/
 
-# Data
-data/raw/*
-data/processed/*
-data/test/*
+# Operating system files
+.DS_Store
+Thumbs.db
 
-# Model files
-*.pt
-*.pth
-*.bin
-*.safetensors
+# IDE
+.vscode/
+.idea/
 
 # Logs
 *.log
 
-# OS
-.DS_Store
-
-# IDE
-.vscode/
+# Build files
+build/
+dist/
+*.egg-info/

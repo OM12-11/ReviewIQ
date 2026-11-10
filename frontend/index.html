@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReviewIQ | Product Review Analytics</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">R</div>
+                <h2>ReviewIQ</h2>
+            </div>
+
+            <div class="sidebar-section">
+                <p class="sidebar-label">MAIN MENU</p>
+
+                <nav class="sidebar-nav">
+                    <a href="#dashboard" class="nav-link active">
+                        <span>▦</span> Dashboard
+                    </a>
+
+                    <a href="#sentiment" class="nav-link">
+                        <span>◉</span> Sentiment Analysis
+                    </a>
+
+                    <a href="#aspects" class="nav-link">
+                        <span>◫</span> Aspect Analysis
+                    </a>
+
+                    <a href="#products" class="nav-link">
+                        <span>▤</span> Product Analysis
+                    </a>
+
+                    <a href="#upload" class="nav-link">
+                        <span>↑</span> Upload Dataset
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>ReviewIQ</p>
+                <span>Product Intelligence Platform</span>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header class="top-header">
+
+                <div>
+                    <p class="breadcrumb">Workspace / Dashboard</p>
+                    <h1>Dashboard Overview</h1>
+                    <p class="page-description">
+                        Analyze customer feedback and understand product sentiment.
+                    </p>
+                </div>
+
+                <div class="header-right">
+                    <span class="status-indicator"></span>
+                    <span>System Online</span>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboard">
+
+                <!-- KPI CARDS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-heading">
+                            <span>Total Reviews</span>
+                            <div class="stat-icon blue">▤</div>
+                        </div>
+
+                        <h2 id="totalReviews">--</h2>
+                        <p>Customer reviews stored</p>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-heading">
+                            <span>Total Products</span>
+                            <div class="stat-icon purple">▣</div>
+                        </div>
+
+                        <h2 id="totalProducts">--</h2>
+                        <p>Products in the database</p>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-heading">
+                            <span>Analyzed Reviews</span>
+                            <div class="stat-icon green">✓</div>
+                        </div>
+
+                        <h2 id="analyzedReviews">--</h2>
+                        <p>Reviews with predictions</p>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-heading">
+                            <span>Total Predictions</span>
+                            <div class="stat-icon orange">◈</div>
+                        </div>
+
+                        <h2 id="totalPredictions">--</h2>
+                        <p>Aspect-level predictions</p>
+                    </div>
+
+                </div>
+
+
+                <!-- SENTIMENT SECTION -->
+                <section id="sentiment" class="content-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Sentiment Overview</h2>
+                            <p>Overall customer sentiment distribution</p>
+                        </div>
+                    </div>
+
+                    <div class="sentiment-layout">
+
+                        <div class="chart-card sentiment-chart-card">
+
+                            <div class="card-heading">
+                                <h3>Sentiment Distribution</h3>
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="sentimentChart"></canvas>
+                            </div>
+
+                        </div>
+
+
+                        <div class="sentiment-details">
+
+                            <div class="sentiment-card positive">
+                                <div>
+                                    <span class="sentiment-label">Positive</span>
+                                    <h2 id="positiveCount">--</h2>
+                                </div>
+                                <span class="sentiment-dot"></span>
+                            </div>
+
+                            <div class="sentiment-card negative">
+                                <div>
+                                    <span class="sentiment-label">Negative</span>
+                                    <h2 id="negativeCount">--</h2>
+                                </div>
+                                <span class="sentiment-dot"></span>
+                            </div>
+
+                            <div class="sentiment-card neutral">
+                                <div>
+                                    <span class="sentiment-label">Neutral</span>
+                                    <h2 id="neutralCount">--</h2>
+                                </div>
+                                <span class="sentiment-dot"></span>
+                            </div>
+
+                            <div class="confidence-card">
+                                <p>Average Model Confidence</p>
+                                <h2 id="averageConfidence">--</h2>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ASPECT ANALYSIS -->
+                <section id="aspects" class="content-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Aspect Analysis</h2>
+                            <p>Understand customer opinions about individual product features</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+
+                        <div class="card-heading">
+                            <h3>Sentiment by Product Aspect</h3>
+                        </div>
+
+                        <div class="chart-container aspect-chart-container">
+                            <canvas id="aspectChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PRODUCT ANALYSIS -->
+                <section id="products" class="content-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Product Performance</h2>
+                            <p>Compare customer sentiment across products</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+
+                        <div class="card-heading">
+                            <h3>Product Sentiment Summary</h3>
+                        </div>
+
+                        <div class="table-wrapper">
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Total Reviews</th>
+                                        <th>Positive</th>
+                                        <th>Negative</th>
+                                        <th>Neutral</th>
+                                        <th>Dominant Sentiment</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="productTableBody">
+                                    <tr>
+                                        <td colspan="6" class="empty-message">
+                                            Product data will appear here.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- DATA UPLOAD -->
+                <section id="upload" class="content-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Upload Review Dataset</h2>
+                            <p>Import customer reviews for sentiment analysis</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-card upload-card">
+
+                        <div class="upload-content">
+
+                            <div class="upload-icon">↑</div>
+
+                            <h3>Upload CSV Dataset</h3>
+
+                            <p>
+                                Select a CSV file containing product reviews
+                                to add new records to ReviewIQ.
+                            </p>
+
+                            <input
+                                type="file"
+                                id="datasetFile"
+                                accept=".csv"
+                            >
+
+                            <button id="uploadButton" class="primary-button">
+                                Upload Dataset
+                            </button>
+                            
+                            <button id="analyzeButton" type="button">
+                            Run Sentiment Analysis
+                            </button>
+
+                            <p id="analysisMessage"></p>
+                            
+                            <p id="uploadMessage" class="upload-message"></p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+                <footer class="dashboard-footer">
+                    <p>ReviewIQ — Intelligent Product Feedback Analysis</p>
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
